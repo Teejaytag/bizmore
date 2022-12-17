@@ -1,6 +1,7 @@
 import Head from "next/head"
 import Image from "next/image"
 import Link from "next/link"
+import { useState } from "react"
 import AccountCreation from "../../src/sections/AccountForm"
 import BizForm from "../../src/sections/BizForm"
 import ChgPwdForm from "../../src/sections/ChgPwdForm"
@@ -9,6 +10,18 @@ import OtpForm from "../../src/sections/OtpForm"
 import ResetPwd from "../../src/sections/ResetPwd"
 
 export default function Home() {
+  const [step, setStep] = useState(0)
+
+  const nextStep = (e: React.SyntheticEvent) => {
+    e.preventDefault()
+    if (step < 5) setStep((prevState) => prevState + 1)
+  }
+
+  const prevStep = (e: React.SyntheticEvent) => {
+    e.preventDefault()
+    setStep((prevState) => prevState - 1)
+  }
+
   return (
     <div className="">
       <Head>
@@ -28,12 +41,12 @@ export default function Home() {
           </p>
         </div>
         <div className="w-full lg:w-[60%] lg:absolute lg:right-0 px-5 py-5 lg:px-[6rem] lg:py-[4rem] xl:px-[8.125rem] xl:py-[7.4375rem]">
-          {/* <AccountCreation /> */}
-          {/* <BizForm /> */}
-          <LoginForm />
-          {/* <ResetPwd /> */}
-          {/* <OtpForm /> */}
-          {/* <ChgPwdForm /> */}
+          {step == 0 && <AccountCreation onClick={nextStep} />}
+          {step == 1 && <BizForm onClick={nextStep} />}
+          {step == 2 && <LoginForm onClick={nextStep} />}
+          {step == 3 && <ResetPwd onClick={nextStep} />}
+          {step == 4 && <OtpForm onClick={nextStep} />}
+          {step == 5 && <ChgPwdForm onClick={nextStep} />}
         </div>
       </div>
     </div>
