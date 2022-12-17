@@ -1,15 +1,22 @@
 import FormInput from "../components/FormInput"
 import PrimaryBtn from "../components/PrimaryBtn"
 import SelectInput from "../components/SelectInput"
+import { useStore } from "../store"
 
-export default function AccountCreation() {
+interface Props {
+  onClick: (e:React.SyntheticEvent) => void
+}
+
+export default function AccountCreation(props: Props) {
   return (
     <>
-      <h1 className="text-center text-[1.5rem] lg:text-[2rem] font-medium lg:mb-4 xl:mb-[1.625rem]">Get Started</h1>
+      <h1 className="text-center text-[1.5rem] lg:text-[2rem] font-medium lg:mb-4 xl:mb-[1.625rem]">
+        Get Started
+      </h1>
       <p className="text-center ">Create an account to start growing your business</p>
 
       <div className="mt-10 lg:mt-14 xl:mt-[4.3125rem]">
-        <form>
+        <form onSubmit={props.onClick}>
           <div className="flex gap-4 w-full">
             <FormInput label={"First name"} name={"fname"} placeholder="First name" />
             <FormInput label={"Last name"} name={"lname"} placeholder="Last name" />
