@@ -40,7 +40,7 @@ export default function Home() {
             Manage your business with bizmore, the only business management tools you really need
           </p>
         </div>
-        <div className="w-full lg:w-[60%] lg:absolute lg:right-0 px-5 py-5 lg:px-[6rem] lg:py-[4rem] xl:px-[8.125rem] xl:py-[7.4375rem]">
+        <div className="w-full lg:w-[60%] lg:absolute lg:right-0 px-5 py-[4rem] lg:px-[6rem] xl:px-[8.125rem] xl:py-[7.4375rem]">
           {step == 0 && <AccountCreation onClick={nextStep} />}
           {step == 1 && <BizForm onClick={nextStep} />}
           {step == 2 && <LoginForm onClick={nextStep} />}
